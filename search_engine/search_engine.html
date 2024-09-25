@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ファイル名検索機能</title>
+    <style>
+        #results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ファイル名検索</h1>
+    <p>イベント名を入力してください(例:UNO)</p>
+    <input type="text" id="searchInput" placeholder="キーワードを入力">
+    <button onclick="searchFiles()">検索</button>
+
+    <div id="results"></div>
+
+    <script>
+        // 検索対象のファイル名の配列
+        const files = [
+            "files/UNO_image.jpg",
+            "files/UNO_チラシ.pptx",
+            "files/UNO_当日進行表.xlsx",
+            "files/UNO_司会原稿.docx",
+           //などなど
+        ];
+
+        function searchFiles() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const resultsDiv = document.getElementById("results");
+            resultsDiv.innerHTML = ""; // 結果をリセット
+
+            const filteredFiles = files.filter(file => file.toLowerCase().includes(input));
+
+            if (filteredFiles.length > 0) {
+                filteredFiles.forEach(file => {
+                    const link = document.createElement("a");
+                    link.href = file;
+                    link.textContent = file;
+                    link.target = "_blank"; // 新しいタブで開く
+                    resultsDiv.appendChild(link);
+                    resultsDiv.appendChild(document.createElement("br"));
+                });
+            } else {
+                resultsDiv.textContent = "該当するファイルが見つかりませんでした。";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+body {
+    display: flex;               /* フレックスボックスを使用 */
+    justify-content: center;     /* 水平方向に中央揃え */
+    align-items: flex-start;     /* 垂直方向は上揃え */
+    height: 100vh;              /* ビューポートの高さに合わせる */
+    margin: 0;                  /* デフォルトのマージンをリセット */
+}
+
+img {
+    max-width: 100%;            /* 画像のサイズを画面に合わせる */
+    height: auto;               /* アスペクト比を維持 */
+}
